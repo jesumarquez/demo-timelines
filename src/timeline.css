@@ -1,0 +1,15 @@
+.rt-layout__main {
+    width: calc(100% - 150px);
+  }
+  
+.rt-layout__side {
+    width: 150px;
+}
+  
+.rt-layout {
+    margin-left: -150px;
+}
+
+.rt-marker.rt-is-visible {
+    opacity: 0;
+}
