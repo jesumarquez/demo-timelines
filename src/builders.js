@@ -33,14 +33,16 @@ export const buildQuarterCells = () => {
 }
 
 export const buildMonthCells = () => {
+  const now = new Date()
+
   const v = []
   for (let i = 0; i < MONTHS_PER_YEAR * NUM_OF_YEARS; i += 1) {
-    const startMonth = i
+    const startMonth = now.getMonth() + i;
     const start = addMonthsToYearAsDate(START_YEAR, startMonth)
     const end = addMonthsToYearAsDate(START_YEAR, startMonth + 1)
     v.push({
       id: `m${startMonth}`,
-      title: MONTH_NAMES[i % 12],
+      title: MONTH_NAMES[startMonth % 12],
       start,
       end,
     })
@@ -50,14 +52,19 @@ export const buildMonthCells = () => {
 
 export const buildDaysCells = () => {
   const v = [];
-
-  for (let i = 1; i <= 31; i++){
-    v.push({
-      id: `d${i}`,
-      title: `${i}`,
-      start: new Date(`2020-01-${i} 00:00`),
-      end: new Date(`2020-01-${i} 23:59`),
-    });
+  const today = new Date();
+  for(let m = today.getMonth() + 1; m <= 12; m++)
+  {
+    const lastDay = new Date(today.getFullYear(), m, 0).getDate()
+    console.log(lastDay)
+    for (let i = 1; i <= lastDay; i++){
+      v.push({
+        id: `d${i}`,
+        title: `${i}`,
+        start: new Date(`2020-${m}-${i} 00:00`),
+        end: new Date(`2020-${m}-${i} 23:59`),
+      });
+    }
   }
 
   // for (let i = 0; i < MONTHS_PER_YEAR * NUM_OF_YEARS; i += 1) {
