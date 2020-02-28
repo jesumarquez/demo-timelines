@@ -59,7 +59,7 @@ export const buildDaysCells = () => {
     console.log(lastDay)
     for (let i = 1; i <= lastDay; i++){
       v.push({
-        id: `d${i}`,
+        id: `m${m}d${i}`,
         title: `${i}`,
         start: new Date(`2020-${m}-${i} 00:00`),
         end: new Date(`2020-${m}-${i} 23:59`),
